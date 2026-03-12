@@ -1,0 +1,240 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+
+.header {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 10;
+}
+
+.playerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 300px;
+}
+
+.charName {
+    font-size: 1.5rem;
+    font-family: var(--pixel-font);
+    text-shadow: 0 0 10px currentColor;
+}
+
+.hpContainer {
+    width: 100%;
+}
+
+.hpLabel {
+    font-family: monospace;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    color: #888;
+}
+
+.hpBar {
+    height: 12px;
+    background: #222;
+    border: 1px solid #444;
+    position: relative;
+}
+
+.hpFill {
+    height: 100%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.arena {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.controlsPanel {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.turnIndicatorWrapper {
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.turnLabel {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.turnName {
+    font-family: var(--pixel-font);
+    font-size: 3rem;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px currentColor;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 0 2rem 0.5rem 2rem;
+}
+
+.p1Text {
+    color: var(--p1-color);
+}
+
+.p2Text {
+    color: var(--p2-color);
+}
+
+.attackGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.attackBtn {
+    background: #111;
+    border: 1px solid #444;
+    border-bottom: 4px solid #000;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    text-align: left;
+}
+
+.attackBtn:hover:not(:disabled) {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+}
+
+.attackBtn:active:not(:disabled) {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+}
+
+.attackBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.p1Btn {
+    border-color: rgba(var(--p1-rgb), 0.3);
+}
+
+.p1Btn:hover:not(:disabled) {
+    border-color: var(--p1-color);
+    box-shadow: 0 0 15px rgba(var(--p1-rgb), 0.2);
+}
+
+.p1Btn .keycap {
+    color: var(--p1-color);
+    border-color: rgba(var(--p1-rgb), 0.5);
+}
+
+.p2Btn {
+    border-color: rgba(var(--p2-rgb), 0.3);
+}
+
+.p2Btn:hover:not(:disabled) {
+    border-color: var(--p2-color);
+    box-shadow: 0 0 15px rgba(var(--p2-rgb), 0.2);
+}
+
+.p2Btn .keycap {
+    color: var(--p2-color);
+    border-color: rgba(var(--p2-rgb), 0.5);
+}
+
+.keycap {
+    width: 50px;
+    height: 50px;
+    background: #000;
+    border: 2px solid #444;
+    border-bottom: 4px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--pixel-font);
+    font-size: 1.2rem;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.moveInfo {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.moveName {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cooldownLabel {
+    font-size: 0.6rem;
+    color: #f00;
+    font-family: var(--pixel-font);
+    margin-top: 4px;
+}
+
+.damagePopup {
+    position: absolute;
+    font-family: var(--pixel-font);
+    font-size: 4rem;
+    color: #f00;
+    text-shadow: 0 0 20px #000;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.logContainer {
+    position: absolute;
+    bottom: 250px;
+    left: 20px;
+    z-index: 15;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-left: 2px solid var(--accent-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #888;
+    pointer-events: none;
+}
+
+.logEntry {
+    margin-bottom: 5px;
+}
+
+.logEntry:first-child {
+    color: #fff;
+}

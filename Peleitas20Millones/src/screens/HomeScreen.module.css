@@ -1,0 +1,196 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.canvasContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    text-align: center;
+    z-index: 10;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+    border-radius: 8px;
+    position: relative;
+}
+
+.titleWrapper {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 5rem;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -2px;
+    position: relative;
+    z-index: 2;
+}
+
+.glitchLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 5rem;
+    color: var(--accent-color);
+    letter-spacing: -2px;
+    opacity: 0.5;
+    animation: glitchText 3s infinite;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-5px, 0);
+}
+
+@keyframes glitchText {
+    0% {
+        transform: translate(-2px, 2px);
+        clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    }
+
+    2% {
+        transform: translate(2px, -2px);
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+
+    4% {
+        transform: translate(-5px, 0);
+        clip-path: polygon(0 60%, 100% 60%, 100% 70%, 0 70%);
+    }
+
+    6% {
+        transform: translate(5px, 2px);
+        clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    }
+
+    8% {
+        transform: translate(0, 0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.vs {
+    color: var(--accent-color);
+    font-style: italic;
+    font-size: 0.6em;
+}
+
+.subtitle {
+    font-family: var(--pixel-font);
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 4rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.btnWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.playButton {
+    background: #000;
+    border: none;
+    color: #fff;
+    padding: 1.2rem 4rem;
+    font-size: 1.5rem;
+    font-family: var(--pixel-font);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btnText {
+    position: relative;
+    z-index: 3;
+    letter-spacing: 2px;
+}
+
+.btnBorder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-color);
+    z-index: 2;
+    box-shadow: inset 0 0 15px var(--accent-color), 0 0 15px var(--accent-color);
+}
+
+.playButton:hover .btnBorder {
+    animation: pulseBorder 1s infinite;
+}
+
+@keyframes pulseBorder {
+    0% {
+        box-shadow: inset 0 0 15px var(--accent-color), 0 0 15px var(--accent-color);
+    }
+
+    50% {
+        box-shadow: inset 0 0 30px var(--accent-color), 0 0 30px var(--accent-color);
+    }
+
+    100% {
+        box-shadow: inset 0 0 15px var(--accent-color), 0 0 15px var(--accent-color);
+    }
+}
+
+.footer {
+    margin-top: 4rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+    line-height: 1.5;
+}
+
+/* Screen FX */
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.15) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 15;
+    opacity: 0.4;
+}
+
+.crtNoise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 16;
+}
