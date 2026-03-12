@@ -42,5 +42,38 @@
       { "type": "canvas", "label": "DOM" },
       { "type": "quick", "label": "Puzzle" }
     ]
+  },
+  {
+    "title": "SPACE IMPACT",
+    "url": "./games/space-impact/index.html",
+    "iconText": "SPACE IMPACT",
+    "description": "Shooter espacial estilo Nokia. Dispara enemigos, recoge power-ups y derrota jefes cada 5 oleadas. Flechas para mover, Espacio para disparar.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
+  },
+  {
+    "title": "SNAKE",
+    "url": "./games/snake/index.html",
+    "iconText": "SNAKE",
+    "description": "La serpiente clásica con manzanas rojas y doradas. Come, crece y no choques con las paredes ni contigo mismo. Velocidad progresiva.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
+  },
+  {
+    "title": "BATTLE CITY",
+    "url": "./games/battle-city/index.html",
+    "iconText": "BATTLE CITY",
+    "description": "Clásico de tanques estilo NES. Destruye enemigos, protege tu base y avanza por niveles con mapas únicos. WASD/Flechas + Espacio.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
   }
 ]
