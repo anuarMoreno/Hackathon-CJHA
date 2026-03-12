@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tetris - Juego JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top-bar">
+        <a href="../../index.html" class="back-link">← Volver a juegos</a>
+        <h1>Tetris</h1>
+        <span class="hint">← → mover · ↑ girar · ↓ bajar</span>
+      </header>
+
+      <section class="layout">
+        <div class="game-shell">
+          <canvas id="game-canvas" width="320" height="640"></canvas>
+          <div class="overlay" id="ui-overlay">
+            <div class="message" id="message-text">
+              Pulsa espacio o clic en jugar
+            </div>
+            <button class="btn" id="play-btn">Jugar</button>
+          </div>
+          <div class="hud">
+            <span>Puntuación: <strong id="score-label">0</strong></span>
+            <span>Líneas: <strong id="lines-label">0</strong></span>
+            <span>Nivel: <strong id="level-label">1</strong></span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Personalizar assets</h2>
+          <p class="panel-text">
+            Edita <code>assets.js</code> para cambiar el estilo del Tetris:
+          </p>
+          <ul class="panel-list">
+            <li><strong>Colores</strong> de cada pieza (I, O, T, L, J, S, Z).</li>
+            <li><strong>Tamaño de celda</strong> y bordes.</li>
+            <li><strong>Fondos</strong> sólidos o con imagen.</li>
+            <li><strong>Sprites</strong> opcionales para las celdas.</li>
+          </ul>
+          <p class="panel-text">
+            Todo el motor está separado de la apariencia, ideal para probar
+            cambios rápidos con Cursor.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./assets.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>
+

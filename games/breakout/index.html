@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Breakout - Juego JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top-bar">
+        <a href="../../index.html" class="back-link">← Volver a juegos</a>
+        <h1>Breakout</h1>
+        <span class="hint">← → para mover la pala</span>
+      </header>
+
+      <section class="layout">
+        <div class="game-shell">
+          <canvas id="game-canvas" width="640" height="400"></canvas>
+          <div class="overlay" id="ui-overlay">
+            <div class="message" id="message-text">
+              Pulsa espacio o clic en jugar
+            </div>
+            <button class="btn" id="play-btn">Jugar</button>
+          </div>
+          <div class="hud">
+            <span>Puntuación: <strong id="score-label">0</strong></span>
+            <span>Vidas: <strong id="lives-label">3</strong></span>
+            <span>Nivel: <strong id="level-label">1</strong></span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Personalizar assets</h2>
+          <p class="panel-text">
+            Cambia el aspecto del Breakout editando <code>assets.js</code>:
+          </p>
+          <ul class="panel-list">
+            <li><strong>Pala</strong>: color o sprite propio.</li>
+            <li><strong>Pelota</strong>: color, radio o imagen.</li>
+            <li><strong>Bloques</strong>: paleta de colores por fila o sprites.</li>
+            <li><strong>Fondo</strong>: color base o imagen de fondo.</li>
+          </ul>
+          <p class="panel-text">
+            Igual que en el Dino, el motor usa formas básicas y opcionalmente
+            imágenes, perfectas para iterar rápido con Cursor.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./assets.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>
+

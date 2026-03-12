@@ -3,6 +3,34 @@
 
 const cfg = window.DINO_ASSETS;
 
+const sprites = {
+  dino: null,
+  obstacle: null,
+  background: null,
+};
+
+const spriteLoaded = {
+  dino: false,
+  obstacle: false,
+  background: false,
+};
+
+function loadSprite(key, src) {
+  if (!src) return;
+  const img = new Image();
+  img.src = src;
+  img.onload = () => {
+    spriteLoaded[key] = true;
+  };
+  sprites[key] = img;
+}
+
+if (cfg.images) {
+  loadSprite("dino", cfg.images.dino);
+  loadSprite("obstacle", cfg.images.obstacle);
+  loadSprite("background", cfg.images.background);
+}
+
 const canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext("2d");
 
@@ -123,9 +151,16 @@ function rectsOverlap(a, b) {
 
 function drawBackground() {
   const bg = cfg.background;
-  ctx.fillStyle = bg.skyColor;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  // Si hay imagen de fondo, la usamos ocupando todo el canvas.
+  if (sprites.background && spriteLoaded.background) {
+    ctx.drawImage(sprites.background, 0, 0, canvas.width, canvas.height);
+  } else {
+    ctx.fillStyle = bg.skyColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Suelo encima del fondo (para mantener el "ground" consistente).
   ctx.fillStyle = bg.groundColor;
   ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
 
@@ -136,7 +171,8 @@ function drawBackground() {
   ctx.lineTo(canvas.width, groundY + 0.5);
   ctx.stroke();
 
-  if (!bg.details) return;
+  // Detalles extra si no tienes una imagen de fondo propia
+  if (!bg.details || (sprites.background && spriteLoaded.background)) return;
 
   ctx.fillStyle = "#020617";
   drawMountain(60, groundY, 110, 42);
@@ -165,28 +201,36 @@ function drawDino() {
   ctx.save();
   ctx.translate(dino.x, dino.y);
 
-  ctx.fillStyle = d.color;
-  if (d.style === "round") {
-    ctx.fillRect(0, 6, d.width * 0.75, d.height * 0.7);
-    ctx.fillRect(d.width * 0.15, 0, d.width * 0.45, d.height * 0.5);
-    ctx.beginPath();
-    ctx.arc(d.width * 0.4, d.height * 0.9, d.width * 0.2, 0, Math.PI);
-    ctx.fill();
-  } else if (d.style === "robot") {
-    ctx.fillRect(0, 6, d.width * 0.75, d.height * 0.76);
-    ctx.fillRect(d.width * 0.2, -4, d.width * 0.45, d.height * 0.45);
-    ctx.fillRect(d.width * 0.05, d.height * 0.76, d.width * 0.25, 6);
-    ctx.fillRect(d.width * 0.45, d.height * 0.76, d.width * 0.25, 6);
+  if (sprites.dino && spriteLoaded.dino) {
+    // Escalamos la imagen al alto configurado y ajustamos el ancho manteniendo proporción.
+    const targetH = d.height;
+    const ratio = sprites.dino.width / sprites.dino.height || 1;
+    const targetW = targetH * ratio;
+    ctx.drawImage(sprites.dino, 0, 0, targetW, targetH);
   } else {
-    ctx.fillRect(0, 8, d.width * 0.8, d.height * 0.7);
-    ctx.fillRect(d.width * 0.45, 0, d.width * 0.4, d.height * 0.5);
-    ctx.fillRect(d.width * 0.55, d.height * 0.5, d.width * 0.4, 8);
-    ctx.fillRect(d.width * 0.15, d.height * 0.8, d.width * 0.25, 8);
-    ctx.fillRect(d.width * 0.5, d.height * 0.8, d.width * 0.25, 8);
-  }
+    ctx.fillStyle = d.color;
+    if (d.style === "round") {
+      ctx.fillRect(0, 6, d.width * 0.75, d.height * 0.7);
+      ctx.fillRect(d.width * 0.15, 0, d.width * 0.45, d.height * 0.5);
+      ctx.beginPath();
+      ctx.arc(d.width * 0.4, d.height * 0.9, d.width * 0.2, 0, Math.PI);
+      ctx.fill();
+    } else if (d.style === "robot") {
+      ctx.fillRect(0, 6, d.width * 0.75, d.height * 0.76);
+      ctx.fillRect(d.width * 0.2, -4, d.width * 0.45, d.height * 0.45);
+      ctx.fillRect(d.width * 0.05, d.height * 0.76, d.width * 0.25, 6);
+      ctx.fillRect(d.width * 0.45, d.height * 0.76, d.width * 0.25, 6);
+    } else {
+      ctx.fillRect(0, 8, d.width * 0.8, d.height * 0.7);
+      ctx.fillRect(d.width * 0.45, 0, d.width * 0.4, d.height * 0.5);
+      ctx.fillRect(d.width * 0.55, d.height * 0.5, d.width * 0.4, 8);
+      ctx.fillRect(d.width * 0.15, d.height * 0.8, d.width * 0.25, 8);
+      ctx.fillRect(d.width * 0.5, d.height * 0.8, d.width * 0.25, 8);
+    }
 
-  ctx.fillStyle = d.eyeColor;
-  ctx.fillRect(d.width * 0.62, d.height * 0.18, 3, 3);
+    ctx.fillStyle = d.eyeColor;
+    ctx.fillRect(d.width * 0.62, d.height * 0.18, 3, 3);
+  }
 
   ctx.restore();
 }
@@ -197,14 +241,21 @@ function drawObstacles() {
     ctx.save();
     ctx.translate(obs.x, obs.y);
 
-    ctx.fillStyle = obs.hit ? cfg.background.accentColor : conf.color;
-    ctx.fillRect(0, 0, obs.width, obs.height);
+    if (sprites.obstacle && spriteLoaded.obstacle) {
+      const targetH = obs.height;
+      const ratio = sprites.obstacle.width / sprites.obstacle.height || 1;
+      const targetW = targetH * ratio;
+      ctx.drawImage(sprites.obstacle, 0, 0, targetW, targetH);
+    } else {
+      ctx.fillStyle = obs.hit ? cfg.background.accentColor : conf.color;
+      ctx.fillRect(0, 0, obs.width, obs.height);
 
-    ctx.fillStyle = conf.accentColor;
-    const spikes = Math.max(2, Math.round(obs.width / 6));
-    for (let i = 0; i < spikes; i++) {
-      const sx = (i * obs.width) / spikes + 2;
-      ctx.fillRect(sx, 4, 2, 6 + (i % 2) * 4);
+      ctx.fillStyle = conf.accentColor;
+      const spikes = Math.max(2, Math.round(obs.width / 6));
+      for (let i = 0; i < spikes; i++) {
+        const sx = (i * obs.width) / spikes + 2;
+        ctx.fillRect(sx, 4, 2, 6 + (i % 2) * 4);
+      }
     }
 
     ctx.restore();
