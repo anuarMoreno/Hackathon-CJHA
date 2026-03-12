@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D Airplane Battle + Hand Shooting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617, #000814 60%);
+      color: #e5f2ff;
+    }
+    #topHud {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+      backdrop-filter: blur(14px);
+      z-index: 10;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    #topHud strong { font-weight: 600; color: #7dd3fc; }
+    #hudSpacer {
+      width: 1px;
+      height: 18px;
+      background: linear-gradient(to bottom, transparent, rgba(148,163,184,0.9), transparent);
+      opacity: 0.9;
+    }
+    #throttleBar {
+      position: relative;
+      width: 90px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(51, 65, 85, 0.9);
+    }
+    #throttleFill {
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #16a34a, #22c55e, #67e8f9);
+      transition: width 0.08s linear;
+    }
+    #bottomHud {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, rgba(15,23,42,0.96), rgba(15,23,42,0.8));
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+      font-size: 11px;
+      z-index: 10;
+      letter-spacing: 0.06em;
+    }
+    #crosshair {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 5;
+    }
+    #crosshair::before,
+    #crosshair::after {
+      content: "";
+      position: absolute;
+      background: rgba(125, 211, 252, 0.95);
+      border-radius: 2px;
+    }
+    #crosshair::before {
+      left: 50%;
+      top: 4px;
+      width: 2px;
+      height: 12px;
+      transform: translateX(-50%);
+    }
+    #crosshair::after {
+      top: 50%;
+      left: 4px;
+      width: 12px;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+    #webcam {
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      width: 220px;
+      max-width: 30vw;
+      border-radius: 12px;
+      border: 2px solid rgba(148, 163, 184, 0.8);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.9);
+      transform: scaleX(-1);
+      background: #020617;
+      z-index: 8;
+    }
+    #cameraStatus {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      transform: translateY(-110%);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      font-size: 11px;
+      z-index: 9;
+    }
+    canvas { display: block; }
+  </style>
+
+  <!-- Three.js -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+  <!-- MediaPipe Hands -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+  <div id="topHud">
+    <span><strong>Flight System</strong></span>
+    <span id="hudSpacer"></span>
+    <span><strong>THR</strong> <span id="throttlePct">40%</span></span>
+    <div id="throttleBar"><div id="throttleFill"></div></div>
+    <span><strong>SPD</strong> <span id="speedReadout">0</span> m/s</span>
+    <span><strong>ALT</strong> <span id="altitudeReadout">0</span> m</span>
+    <span><strong>KILLS</strong> <span id="killCount">0</span></span>
+    <span><strong>FIRE</strong> Mouse / Fist</span>
+  </div>
+
+  <div id="bottomHud">Click to capture mouse. Fly through the sky and close your hand into a fist to fire the cannons.</div>
+
+  <div id="crosshair"></div>
+
+  <video id="webcam" autoplay playsinline muted></video>
+  <div id="cameraStatus">Camera: <span id="cameraState">requesting…</span></div>
+
+  <script src="./main.js"></script>
+  <script src="./hand-gestures.js"></script>
+</body>
+</html>
+
