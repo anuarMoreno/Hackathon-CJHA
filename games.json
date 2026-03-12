@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dino",
+    "title": "DINO RUNNER",
+    "url": "./games/dino/index.html",
+    "iconText": "[ DINO_RUNNER.EXE ]",
+    "description": "Customizable Chrome-style dinosaur runner. Change the dino, obstacles, and background by editing a single config file. No internet required.",
+    "tags": [
+      { "label": "JavaScript", "type": "js" },
+      { "label": "Canvas", "type": "canvas" },
+      { "label": "Quick Play", "type": "quick" }
+    ]
+  }
+]
