@@ -64,5 +64,16 @@
       { "type": "canvas", "label": "Canvas" },
       { "type": "quick", "label": "Quick Play" }
     ]
+  },
+  {
+    "title": "AIRPLANE BATTLE",
+    "url": "./games/airplane-battle/index.html",
+    "iconText": "[ AIRPLANE.EXE ]",
+    "description": "3D dogfight con Three.js. Vuela con WASD y mouse, dispara con clic o cerrando la mano (fist) frente a la cámara. Cámara requerida para gestos.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Three.js" },
+      { "type": "quick", "label": "Hand Gesture" }
+    ]
   }
 ]
