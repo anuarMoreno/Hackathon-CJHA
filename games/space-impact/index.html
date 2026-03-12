@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Space Impact - Juego JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top-bar">
+        <a href="../../index.html" class="back-link">← Volver a juegos</a>
+        <h1>Space Impact</h1>
+        <span class="hint">Flechas: mover · Espacio: disparar</span>
+      </header>
+
+      <section class="layout">
+        <div class="game-shell">
+          <canvas id="game-canvas" width="700" height="350"></canvas>
+          <div class="overlay" id="ui-overlay">
+            <div class="message" id="message-text">Presiona espacio para iniciar</div>
+            <button class="btn" id="play-btn">Jugar</button>
+          </div>
+          <div class="hud">
+            <span>Puntuación: <strong id="score-label">0</strong></span>
+            <span>Récord: <strong id="best-label">0</strong></span>
+            <span>Vidas: <strong id="lives-label">3</strong></span>
+            <span>Oleada: <strong id="wave-label">0</strong></span>
+          </div>
+          <div class="boss-bar hidden" id="boss-bar">
+            <div class="boss-bar-fill" id="boss-bar-fill"></div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Controles</h2>
+          <table class="controls-table">
+            <tr><td>↑ ↓ ← →  /  WASD</td><td>Mover nave</td></tr>
+            <tr><td>Espacio</td><td>Disparar</td></tr>
+          </table>
+
+          <h2 style="margin-top: 14px">Power‑ups</h2>
+          <ul class="panel-list">
+            <li><strong style="color: #22c55e">T</strong> — Triple disparo</li>
+            <li><strong style="color: #3b82f6">S</strong> — Escudo protector</li>
+            <li><strong style="color: #eab308">R</strong> — Disparo rápido</li>
+          </ul>
+
+          <p class="panel-text" style="margin-top: 8px">
+            Cada 5 oleadas aparece un <strong>jefe</strong> con barra de vida.
+            Personaliza el juego editando <code>assets.js</code>.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./assets.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>

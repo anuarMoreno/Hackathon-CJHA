@@ -31,5 +31,17 @@
       { "type": "canvas", "label": "Canvas" },
       { "type": "quick", "label": "Quick Play" }
     ]
+  },
+  {
+    "id": "space-impact",
+    "title": "SPACE IMPACT",
+    "url": "./games/space-impact/index.html",
+    "iconText": "[ SPACE_IMPACT.EXE ]",
+    "description": "Classic Nokia-style space shooter. Blast enemies, grab power-ups, and fight bosses every 5 waves. Arrows to move, Space to fire.",
+    "tags": [
+      { "label": "JavaScript", "type": "js" },
+      { "label": "Canvas", "type": "canvas" },
+      { "label": "Quick Play", "type": "quick" }
+    ]
   }
 ]
