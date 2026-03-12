@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Arcade Survivor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="../../index.html" class="back-link">← Volver a juegos</a>
+    
+    <div id="game-container">
+      <canvas id="game-canvas"></canvas>
+      
+      <div id="ui-layer">
+        <div id="stats-bar">
+          <div class="stat">LVL: <span id="level-display">1</span></div>
+          <div class="stat">TIME: <span id="time-display">00:00</span></div>
+          <div class="stat">KILLS: <span id="kills-display">0</span></div>
+        </div>
+
+        <div id="xp-bar-container">
+          <div id="xp-bar-fill"></div>
+        </div>
+
+        <div id="hp-bar-container">
+          <div id="hp-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Start Screen -->
+      <div id="start-screen" class="overlay active">
+        <h1>ARCADE SURVIVOR</h1>
+        <p>Muévete con WASD o Flechas.</p>
+        <p>Tú atacas automáticamente.</p>
+        <p>¡Sobrevive a la horda!</p>
+        <button id="start-btn" class="btn">INICIAR (Space)</button>
+      </div>
+
+      <!-- Level Up Screen -->
+      <div id="levelup-screen" class="overlay">
+        <h2>¡NIVEL SUPERADO!</h2>
+        <p>Elige una mejora:</p>
+        <div id="upgrades-container" class="cards-container">
+          <!-- Cards injected via JS -->
+        </div>
+      </div>
+
+      <!-- Game Over Screen -->
+      <div id="gameover-screen" class="overlay">
+        <h1 class="red">HAS MUERTO</h1>
+        <div class="final-stats">
+          <p>Supervivencia: <span id="final-time">00:00</span></p>
+          <p>Nivel Alcanzado: <span id="final-level">1</span></p>
+          <p>Enemigos Derrotados: <span id="final-kills">0</span></p>
+        </div>
+        <button id="restart-btn" class="btn">REINTENTAR (Space)</button>
+      </div>
+    </div>
+
+    <!-- Assets JS must load before Game JS -->
+    <script src="./assets.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>

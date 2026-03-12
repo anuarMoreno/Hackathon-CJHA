@@ -75,5 +75,17 @@
       { "type": "canvas", "label": "Canvas" },
       { "type": "quick", "label": "Quick Play" }
     ]
+  },
+  {
+    "title": "ARCADE SURVIVOR",
+    "url": "./games/survivor/index.html",
+    "iconText": "SURVIVOR",
+    "description": "Roguelike de supervivencia estilo Vampire Survivors. ¡Sobrevive a la horda, sube de nivel y elige tus mejoras!",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Action" },
+      { "type": "quick", "label": "Roguelike" }
+    ]
   }
 ]
