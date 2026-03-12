@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snake - Juego JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top-bar">
+        <a href="../../index.html" class="back-link">← Volver a juegos</a>
+        <h1>Snake</h1>
+        <span class="hint">Flechas / WASD: dirección · Espacio: iniciar</span>
+      </header>
+
+      <section class="layout">
+        <div class="game-shell">
+          <canvas id="game-canvas"></canvas>
+          <div class="overlay" id="ui-overlay">
+            <div class="message" id="message-text">Presiona espacio para iniciar</div>
+            <button class="btn" id="play-btn">Jugar</button>
+          </div>
+          <div class="hud">
+            <span>Puntuación: <strong id="score-label">0</strong></span>
+            <span>Récord: <strong id="best-label">0</strong></span>
+            <span>Largo: <strong id="length-label">3</strong></span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Controles</h2>
+          <div class="controls-grid">
+            <span class="key">↑ ↓ ← →</span>
+            <span class="action">Mover serpiente</span>
+            <span class="key">W A S D</span>
+            <span class="action">Mover serpiente</span>
+            <span class="key">Espacio</span>
+            <span class="action">Iniciar / Reintentar</span>
+          </div>
+
+          <h2 style="margin-top: 16px">Manzanas</h2>
+          <ul class="panel-list">
+            <li><strong>Roja</strong> — +10 pts, aumenta velocidad</li>
+            <li><strong>Dorada</strong> — +50 pts, aparece al azar y desaparece</li>
+            <li><strong>Comer</strong> — La serpiente crece 1 segmento</li>
+            <li><strong>Velocidad</strong> — Aumenta con cada manzana</li>
+          </ul>
+
+          <p class="panel-text">
+            Personaliza colores, velocidad y tamaño del tablero
+            editando <code>assets.js</code>.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./assets.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>
