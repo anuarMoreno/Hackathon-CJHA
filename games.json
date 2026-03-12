@@ -33,15 +33,14 @@
     ]
   },
   {
-    "id": "space-impact",
-    "title": "SPACE IMPACT",
-    "url": "./games/space-impact/index.html",
-    "iconText": "[ SPACE_IMPACT.EXE ]",
-    "description": "Classic Nokia-style space shooter. Blast enemies, grab power-ups, and fight bosses every 5 waves. Arrows to move, Space to fire.",
+    "title": "TECH WORDLE",
+    "url": "./games/wordle/index.html",
+    "iconText": "WORDLE",
+    "description": "Adivina la palabra en 6 intentos. 10 niveles con términos de programación.",
     "tags": [
-      { "label": "JavaScript", "type": "js" },
-      { "label": "Canvas", "type": "canvas" },
-      { "label": "Quick Play", "type": "quick" }
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "DOM" },
+      { "type": "quick", "label": "Puzzle" }
     ]
   }
 ]

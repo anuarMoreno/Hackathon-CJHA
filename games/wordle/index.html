@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tech Wordle - Juego JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="top-bar">
+        <a href="../../index.html" class="back-link">← Volver a juegos</a>
+        <h1>Tech Wordle</h1>
+        <span class="hint" id="level-indicator">Nivel 1/10</span>
+      </header>
+
+      <section class="layout">
+        <div class="game-shell">
+          <div id="game-board" class="board"></div>
+          
+          <div id="message-container" class="message-container"></div>
+          
+          <div id="keyboard" class="keyboard">
+            <div class="row">
+              <button data-key="q">Q</button>
+              <button data-key="w">W</button>
+              <button data-key="e">E</button>
+              <button data-key="r">R</button>
+              <button data-key="t">T</button>
+              <button data-key="y">Y</button>
+              <button data-key="u">U</button>
+              <button data-key="i">I</button>
+              <button data-key="o">O</button>
+              <button data-key="p">P</button>
+            </div>
+            <div class="row">
+              <button data-key="a">A</button>
+              <button data-key="s">S</button>
+              <button data-key="d">D</button>
+              <button data-key="f">F</button>
+              <button data-key="g">G</button>
+              <button data-key="h">H</button>
+              <button data-key="j">J</button>
+              <button data-key="k">K</button>
+              <button data-key="l">L</button>
+            </div>
+            <div class="row">
+              <button data-key="enter" class="wide">ENTER</button>
+              <button data-key="z">Z</button>
+              <button data-key="x">X</button>
+              <button data-key="c">C</button>
+              <button data-key="v">V</button>
+              <button data-key="b">B</button>
+              <button data-key="n">N</button>
+              <button data-key="m">M</button>
+              <button data-key="del" class="wide">DEL</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Instrucciones</h2>
+          <p class="panel-text">
+            Adivina la palabra oculta. Cada palabra está relacionada con la programación o tecnología.
+          </p>
+          <ul class="panel-list">
+            <li>Las palabras tienen <strong>6 letras</strong>.</li>
+            <li>Tienes <strong>6 intentos</strong>.</li>
+            <li><strong style="color: #538d4e;">Verde</strong>: La letra está en la palabra y en la posición correcta.</li>
+            <li><strong style="color: #b59f3b;">Amarillo</strong>: La letra está en la palabra pero en otra posición.</li>
+            <li><strong style="color: #3a3a3c;">Gris</strong>: La letra no está en la palabra.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

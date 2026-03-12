@@ -191,7 +191,7 @@
         text-decoration: none;
         color: inherit;
         overflow: hidden;
-        transition: transform 250ms ease-out, box-shadow 250ms ease-out, border-color 250ms ease-out;
+        transition: all 250ms ease-out;
         animation: slideIn 0.6s ease-out both;
         min-height: 220px;
         display: flex;
@@ -225,7 +225,7 @@
           0 0 15px rgba(0, 255, 247, 0.5),
           0 0 40px rgba(0, 255, 247, 0.25),
           0 12px 35px rgba(0, 0, 0, 0.6);
-        /* Se removio borderGlow para evitar el flickering en la animacion al cambiar de border a box-shadow constantemente sobre hover */
+        animation: borderGlow 1.5s ease-in-out infinite;
       }
 
       .game-card:hover::before {
@@ -483,10 +483,7 @@
             const card = document.createElement('a');
             card.className = 'game-card';
             card.href = game.url;
-            card.style.animation = 'none';
-            // Force reflow
-            card.offsetHeight;
-            card.style.animation = `slideIn 0.6s ease-out ${(index % 4 + 1) * 0.1}s both`;
+            card.style.animationDelay = `${(index % 4 + 1) * 0.1}s`;
             
             const tagsHtml = game.tags.map(tag => 
               `<span class="tag tag-${tag.type}">${tag.label}</span>`
