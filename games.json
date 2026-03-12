@@ -5,9 +5,18 @@
     "iconText": "DINO RUNNER",
     "description": "Versión personalizable del dino runner estilo Chrome. Cambia dino, obstáculos y fondo editando un solo archivo de configuración.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
     ]
   },
   {
@@ -16,9 +25,18 @@
     "iconText": "BREAKOUT",
     "description": "Rompe filas de bloques con una pelota rebotando en tu pala. Pala, bloques, pelota y fondo son totalmente configurables.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
     ]
   },
   {
@@ -27,9 +45,18 @@
     "iconText": "TETRIS",
     "description": "Encaja piezas que caen, limpia líneas y sube de nivel. Colores, celdas y fondo se ajustan desde assets.js.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
     ]
   },
   {
@@ -49,9 +76,18 @@
     "iconText": "SPACE IMPACT",
     "description": "Shooter espacial estilo Nokia. Dispara enemigos, recoge power-ups y derrota jefes cada 5 oleadas. Flechas para mover, Espacio para disparar.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
     ]
   },
   {
@@ -60,9 +96,18 @@
     "iconText": "SNAKE",
     "description": "La serpiente clásica con manzanas rojas y doradas. Come, crece y no choques con las paredes ni contigo mismo. Velocidad progresiva.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
     ]
   },
   {
@@ -71,9 +116,38 @@
     "iconText": "BATTLE CITY",
     "description": "Clásico de tanques estilo NES. Destruye enemigos, protege tu base y avanza por niveles con mapas únicos. WASD/Flechas + Espacio.",
     "tags": [
-      { "type": "js", "label": "JavaScript" },
-      { "type": "canvas", "label": "Canvas" },
-      { "type": "quick", "label": "Quick Play" }
+      {
+        "type": "js",
+        "label": "JavaScript"
+      },
+      {
+        "type": "canvas",
+        "label": "Canvas"
+      },
+      {
+        "type": "quick",
+        "label": "Quick Play"
+      }
+    ]
+  },
+  {
+    "title": "PELEITAS 20 MILLONES",
+    "url": "./games/peleitas/index.html",
+    "iconText": "PELEITAS",
+    "description": "Un juego de lucha épico creado con React y Three.js. ¡Enfréntate a desafíos de 20 millones en este épico juego de combate!",
+    "tags": [
+      {
+        "type": "quick",
+        "label": "Vite"
+      },
+      {
+        "type": "js",
+        "label": "React"
+      },
+      {
+        "type": "canvas",
+        "label": "3D"
+      }
     ]
   },
   {
