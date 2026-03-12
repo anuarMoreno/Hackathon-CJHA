@@ -31,18 +31,35 @@
       }
 
       @keyframes slideIn {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
       }
 
       @keyframes borderGlow {
-        0%, 100% { border-color: #00fff7; box-shadow: 0 0 8px #00fff7, inset 0 0 8px rgba(0, 255, 247, 0.1); }
-        50% { border-color: #ff00de; box-shadow: 0 0 8px #ff00de, inset 0 0 8px rgba(255, 0, 222, 0.1); }
+        0%, 100% { border-color: #00fff7; box-shadow: 0 0 12px #00fff7, inset 0 0 12px rgba(0, 255, 247, 0.1); }
+        50% { border-color: #ff00de; box-shadow: 0 0 12px #ff00de, inset 0 0 12px rgba(255, 0, 222, 0.1); }
       }
 
       @keyframes coinBlink {
         0%, 100% { color: #ffd700; }
         50% { color: #ff8c00; }
+      }
+      
+      @keyframes fastBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      @keyframes spinCoin {
+        0% { transform: rotateY(0deg); }
+        100% { transform: rotateY(360deg); }
+      }
+
+      @keyframes dropCoin {
+        0% { transform: translateY(-250px) scale(1.5); opacity: 0; }
+        20% { opacity: 1; }
+        70% { transform: translateY(0px) scale(1); opacity: 1; }
+        100% { transform: translateY(150px) scale(0.5); opacity: 0; }
       }
 
       * {
@@ -74,7 +91,7 @@
           transparent 2px
         );
         pointer-events: none;
-        z-index: 9999;
+        z-index: 9997;
         animation: scanlines 0.1s linear infinite;
       }
 
@@ -82,99 +99,104 @@
         content: "";
         position: fixed;
         inset: 0;
-        background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+        background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
         pointer-events: none;
-        z-index: 9998;
+        z-index: 9996;
       }
 
       .app {
         width: 100%;
-        max-width: 900px;
-        padding: 32px 20px;
+        max-width: 1200px;
+        padding: 40px 24px;
         animation: flicker 6s infinite;
       }
 
       .cabinet {
         background: linear-gradient(180deg, #0d0d1a 0%, #060612 100%);
-        border: 3px solid #00fff7;
-        border-radius: 4px;
+        border: 4px solid #00fff7;
+        border-radius: 8px;
         padding: 0;
         box-shadow:
-          0 0 15px rgba(0, 255, 247, 0.3),
-          0 0 60px rgba(0, 255, 247, 0.1),
-          inset 0 0 30px rgba(0, 0, 0, 0.5);
+          0 0 20px rgba(0, 255, 247, 0.4),
+          0 0 80px rgba(0, 255, 247, 0.15),
+          inset 0 0 40px rgba(0, 0, 0, 0.6);
         overflow: hidden;
       }
 
       .cabinet-top {
         background: linear-gradient(90deg, #1a0030, #0d0028, #1a0030);
-        padding: 24px 20px 18px;
+        padding: 36px 20px 24px;
         text-align: center;
-        border-bottom: 2px solid #00fff7;
+        border-bottom: 3px solid #00fff7;
         position: relative;
       }
 
       .cabinet-top::after {
         content: "";
         position: absolute;
-        bottom: -2px;
+        bottom: -3px;
         left: 0;
         right: 0;
-        height: 2px;
+        height: 3px;
         background: #00fff7;
-        box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        box-shadow: 0 0 15px #00fff7, 0 0 30px #00fff7;
       }
 
       .title {
-        font-size: clamp(0.8rem, 2.4vw, 1.3rem);
+        font-size: clamp(1.2rem, 3.5vw, 2.2rem);
         color: #ff00de;
         animation: neonPulse 2s ease-in-out infinite;
-        letter-spacing: 0.05em;
-        line-height: 1.8;
+        letter-spacing: 0.08em;
+        line-height: 1.6;
+        margin-bottom: 12px;
       }
 
       .subtitle {
-        font-size: clamp(0.45rem, 1vw, 0.55rem);
+        font-size: clamp(0.6rem, 1.5vw, 0.8rem);
         color: #00fff7;
-        margin-top: 8px;
-        text-shadow: 0 0 8px #00fff7;
-        letter-spacing: 0.1em;
+        margin-top: 12px;
+        text-shadow: 0 0 10px #00fff7;
+        letter-spacing: 0.15em;
       }
 
       .screen {
-        padding: 20px;
-        background: radial-gradient(ellipse at center, #0a0a1e 0%, #050510 100%);
-        min-height: 200px;
+        padding: 40px;
+        background: radial-gradient(ellipse at center, #0a0a1e 0%, #030308 100%);
+        min-height: 400px;
       }
 
       .select-label {
-        font-size: 0.55rem;
+        font-size: 0.75rem;
         color: #ffd700;
         text-align: center;
-        margin-bottom: 16px;
+        margin-bottom: 32px;
         animation: coinBlink 1s ease-in-out infinite;
         letter-spacing: 0.15em;
       }
 
       .games-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 24px;
       }
 
       .game-card {
         position: relative;
         display: block;
-        border: 2px solid #333;
-        border-radius: 4px;
+        border: 3px solid #333;
+        border-radius: 6px;
         background: linear-gradient(180deg, #111122 0%, #0a0a16 100%);
-        padding: 16px;
+        padding: 24px;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
         overflow: hidden;
-        transition: all 200ms ease-out;
-        animation: slideIn 0.5s ease-out both;
+        transition: all 250ms ease-out;
+        animation: slideIn 0.6s ease-out both;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .game-card:nth-child(1) { animation-delay: 0.1s; }
@@ -188,21 +210,21 @@
         inset: 0;
         background: linear-gradient(
           180deg,
-          rgba(0, 255, 247, 0.08) 0%,
-          transparent 50%
+          rgba(0, 255, 247, 0.1) 0%,
+          transparent 60%
         );
         opacity: 0;
-        transition: opacity 200ms ease-out;
+        transition: opacity 250ms ease-out;
         pointer-events: none;
       }
 
       .game-card:hover {
         border-color: #00fff7;
-        transform: translateY(-3px) scale(1.02);
+        transform: translateY(-5px) scale(1.03);
         box-shadow:
-          0 0 12px rgba(0, 255, 247, 0.5),
-          0 0 30px rgba(0, 255, 247, 0.2),
-          0 8px 25px rgba(0, 0, 0, 0.5);
+          0 0 15px rgba(0, 255, 247, 0.5),
+          0 0 40px rgba(0, 255, 247, 0.25),
+          0 12px 35px rgba(0, 0, 0, 0.6);
         animation: borderGlow 1.5s ease-in-out infinite;
       }
 
@@ -214,25 +236,27 @@
         transform: translateY(0) scale(0.98);
       }
 
-      .game-icon {
-        font-size: 1.8rem;
-        margin-bottom: 10px;
+      .game-icon-text {
+        font-size: 1rem;
+        color: #00fff7;
+        margin-bottom: 16px;
         display: block;
-        filter: drop-shadow(0 0 6px rgba(0, 255, 247, 0.5));
+        text-shadow: 0 0 8px rgba(0, 255, 247, 0.6);
+        letter-spacing: 0.1em;
       }
 
       .game-tags {
         display: flex;
-        gap: 8px;
+        gap: 12px;
         flex-wrap: wrap;
-        margin-bottom: 10px;
+        margin-bottom: 16px;
       }
 
       .tag {
-        font-size: 0.4rem;
-        padding: 3px 8px;
-        border: 1px solid;
-        border-radius: 2px;
+        font-size: 0.5rem;
+        padding: 6px 12px;
+        border: 2px solid;
+        border-radius: 4px;
         text-transform: uppercase;
         letter-spacing: 0.1em;
       }
@@ -243,10 +267,10 @@
         background: rgba(255, 215, 0, 0.1);
       }
 
-      .tag-py {
-        border-color: #3b82f6;
-        color: #60a5fa;
-        background: rgba(59, 130, 246, 0.1);
+      .tag-canvas {
+        border-color: #f97316;
+        color: #fb923c;
+        background: rgba(249, 115, 22, 0.1);
       }
 
       .tag-quick {
@@ -255,35 +279,31 @@
         background: rgba(34, 197, 94, 0.1);
       }
 
-      .tag-canvas {
-        border-color: #f97316;
-        color: #fb923c;
-        background: rgba(249, 115, 22, 0.1);
-      }
-
       .game-title {
-        font-size: 0.65rem;
+        font-size: 0.9rem;
         color: #ffffff;
-        margin-bottom: 8px;
-        text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
-        letter-spacing: 0.02em;
+        margin-bottom: 12px;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.05em;
+        line-height: 1.4;
       }
 
       .game-desc {
-        font-size: 0.42rem;
-        color: #888;
-        line-height: 1.8;
-        letter-spacing: 0.02em;
+        font-size: 0.55rem;
+        color: #999;
+        line-height: 2;
+        letter-spacing: 0.04em;
       }
 
       .play-hint {
-        font-size: 0.38rem;
+        font-size: 0.5rem;
         color: #00fff7;
-        margin-top: 12px;
-        text-shadow: 0 0 4px #00fff7;
+        margin-top: 20px;
+        text-shadow: 0 0 6px #00fff7;
         opacity: 0;
-        transition: opacity 200ms ease-out;
+        transition: opacity 250ms ease-out;
         letter-spacing: 0.1em;
+        text-align: center;
       }
 
       .game-card:hover .play-hint {
@@ -292,13 +312,13 @@
 
       .cabinet-bottom {
         background: linear-gradient(90deg, #0d0020, #060018, #0d0020);
-        padding: 14px 20px;
-        border-top: 2px solid #333;
+        padding: 20px 24px;
+        border-top: 3px solid #333;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 12px;
       }
 
       .cabinet-bottom::before {
@@ -307,14 +327,15 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 1px;
-        box-shadow: 0 0 8px #333;
+        height: 2px;
+        box-shadow: 0 0 10px #333;
       }
 
       .credits {
-        font-size: 0.38rem;
-        color: #555;
+        font-size: 0.5rem;
+        color: #666;
         letter-spacing: 0.1em;
+        line-height: 1.6;
       }
 
       .credits strong {
@@ -322,29 +343,80 @@
       }
 
       .tip {
-        font-size: 0.35rem;
-        color: #444;
+        font-size: 0.45rem;
+        color: #555;
         letter-spacing: 0.05em;
       }
 
       .tip code {
         font-family: "Press Start 2P", monospace;
         color: #00fff7;
-        font-size: 0.35rem;
+        font-size: 0.45rem;
       }
 
-      @media (max-width: 640px) {
+      /* Coin Overlay Styles */
+      #coin-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 100000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      #coin-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .svg-coin-container {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+
+      .coin-svg {
+        width: 140px;
+        height: 140px;
+      }
+
+      #coin-overlay.active .coin-svg {
+        animation: 
+          spinCoin 0.4s linear infinite,
+          dropCoin 1.2s cubic-bezier(0.3, 0, 0.8, 1) forwards;
+      }
+
+      .insert-text {
+        margin-top: 40px;
+        color: #ffd700;
+        font-size: 1.2rem;
+        text-shadow: 0 0 15px #ffd700;
+        opacity: 0;
+      }
+
+      #coin-overlay.active .insert-text {
+        animation: fastBlink 0.15s infinite;
+      }
+
+      @media (max-width: 800px) {
+        .games-grid {
+          grid-template-columns: minmax(280px, 1fr);
+        }
         .cabinet {
-          border-width: 2px;
+          border-width: 3px;
         }
         .cabinet-top {
-          padding: 18px 14px 14px;
+          padding: 24px 16px 20px;
         }
         .screen {
-          padding: 14px;
+          padding: 24px;
         }
         .cabinet-bottom {
-          padding: 10px 14px;
+          padding: 16px;
           flex-direction: column;
           align-items: flex-start;
         }
@@ -362,51 +434,11 @@
         <div class="screen">
           <p class="select-label">--- SELECT YOUR GAME ---</p>
 
-          <div class="games-grid">
-            <a class="game-card" href="./games/dino/index.html">
-              <span class="game-icon">&#x1F995;</span>
-              <div class="game-tags">
-                <span class="tag tag-js">JavaScript</span>
-                <span class="tag tag-canvas">Canvas</span>
-                <span class="tag tag-quick">Quick Play</span>
-              </div>
-              <div class="game-title">DINO RUNNER</div>
-              <p class="game-desc">
-                Versión personalizable del dino runner estilo Chrome.
-                Cambia dino, obstáculos y fondo editando un solo archivo de configuración.
-              </p>
-              <div class="play-hint">&gt; PRESS START &lt;</div>
-            </a>
-
-            <a class="game-card" href="./games/breakout/index.html">
-              <span class="game-icon">&#x1F3AE;</span>
-              <div class="game-tags">
-                <span class="tag tag-js">JavaScript</span>
-                <span class="tag tag-canvas">Canvas</span>
-                <span class="tag tag-quick">Quick Play</span>
-              </div>
-              <div class="game-title">BREAKOUT</div>
-              <p class="game-desc">
-                Rompe filas de bloques con una pelota rebotando en tu pala.
-                Pala, bloques, pelota y fondo son totalmente configurables.
-              </p>
-              <div class="play-hint">&gt; PRESS START &lt;</div>
-            </a>
-
-            <a class="game-card" href="./games/tetris/index.html">
-              <span class="game-icon">&#x25A0;</span>
-              <div class="game-tags">
-                <span class="tag tag-js">JavaScript</span>
-                <span class="tag tag-canvas">Canvas</span>
-                <span class="tag tag-quick">Quick Play</span>
-              </div>
-              <div class="game-title">TETRIS</div>
-              <p class="game-desc">
-                Encaja piezas que caen, limpia líneas y sube de nivel.
-                Colores, celdas y fondo se ajustan desde <code>assets.js</code>.
-              </p>
-              <div class="play-hint">&gt; PRESS START &lt;</div>
-            </a>
+          <div class="games-grid" id="games-grid">
+            <!-- Game cards will be injected here via JavaScript -->
+            <div style="text-align: center; color: #fff; padding: 20px;">
+              LOADING CATALOG...
+            </div>
           </div>
         </div>
 
@@ -419,5 +451,73 @@
         </div>
       </div>
     </main>
+
+    <div id="coin-overlay">
+      <div class="svg-coin-container">
+        <svg class="coin-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer coin edge -->
+          <circle cx="50" cy="50" r="46" fill="#ffd700" stroke="#b8860b" stroke-width="4"/>
+          <!-- Inner dashed ring -->
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#daa520" stroke-width="2" stroke-dasharray="4 4"/>
+          <!-- Inner solid ring -->
+          <circle cx="50" cy="50" r="32" fill="none" stroke="#b8860b" stroke-width="1"/>
+          <!-- Center Text -->
+          <text x="50" y="58" font-family="'Press Start 2P', monospace" font-size="22" fill="#b8860b" text-anchor="middle" font-weight="bold">1¢</text>
+        </svg>
+      </div>
+      <div class="insert-text">INSERTING COIN...</div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const grid = document.getElementById('games-grid');
+        const overlay = document.getElementById('coin-overlay');
+
+        try {
+          const response = await fetch('./games.json');
+          const games = await response.json();
+          
+          grid.innerHTML = ''; // Clear loading text
+          
+          games.forEach((game, index) => {
+            const card = document.createElement('a');
+            card.className = 'game-card';
+            card.href = game.url;
+            card.style.animationDelay = `${(index % 4 + 1) * 0.1}s`;
+            
+            const tagsHtml = game.tags.map(tag => 
+              `<span class="tag tag-${tag.type}">${tag.label}</span>`
+            ).join('');
+
+            card.innerHTML = `
+              <span class="game-icon-text">${game.iconText}</span>
+              <div class="game-tags">
+                ${tagsHtml}
+              </div>
+              <div class="game-title">${game.title}</div>
+              <p class="game-desc">${game.description}</p>
+              <div class="play-hint">&gt; PRESS START &lt;</div>
+            `;
+            
+            grid.appendChild(card);
+
+            // Add animation event listener
+            card.addEventListener('click', (e) => {
+              if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey) return;
+              e.preventDefault();
+              
+              overlay.classList.add('active');
+              
+              setTimeout(() => {
+                window.location.href = game.url;
+              }, 1200);
+            });
+          });
+        } catch (error) {
+          grid.innerHTML = '<div style="text-align: center; color: #ff00de; padding: 20px;">ERROR LOADING CATALOG. INSERT COIN AND TRY AGAIN.</div>';
+          console.error("Failed to load games catalog:", error);
+        }
+      });
+    </script>
   </body>
 </html>

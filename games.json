@@ -1,0 +1,35 @@
+[
+  {
+    "title": "DINO RUNNER",
+    "url": "./games/dino/index.html",
+    "iconText": "DINO RUNNER",
+    "description": "Versión personalizable del dino runner estilo Chrome. Cambia dino, obstáculos y fondo editando un solo archivo de configuración.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
+  },
+  {
+    "title": "BREAKOUT",
+    "url": "./games/breakout/index.html",
+    "iconText": "BREAKOUT",
+    "description": "Rompe filas de bloques con una pelota rebotando en tu pala. Pala, bloques, pelota y fondo son totalmente configurables.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
+  },
+  {
+    "title": "TETRIS",
+    "url": "./games/tetris/index.html",
+    "iconText": "TETRIS",
+    "description": "Encaja piezas que caen, limpia líneas y sube de nivel. Colores, celdas y fondo se ajustan desde assets.js.",
+    "tags": [
+      { "type": "js", "label": "JavaScript" },
+      { "type": "canvas", "label": "Canvas" },
+      { "type": "quick", "label": "Quick Play" }
+    ]
+  }
+]
